@@ -4,6 +4,6 @@
   "private": true,
   "scripts": {
     "preinstall": "cd client && npm install && cd .. && cd server && npm install",
-    "build": "(cd server && node server.js) & (cd client && npm run buld)"
+    "build": "(cd server && node server.js) & (cd client && npm run build)"
   }
 }

@@ -48,13 +48,6 @@ export const getNav = (list: string[]) => {
       link: DISBURSEMENT.url,
       logo: Payment
     },
-    {
-      permission: 'fds',
-      name: 'fds',
-      label: 'FDS Control',
-      link: FDS.url,
-      logo: Settings
-    },
   ]
 
   if (!list) return []

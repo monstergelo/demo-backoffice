@@ -14,7 +14,7 @@ async function routes (fastify, options) {
         FROM "Admin" a
         LEFT JOIN "Role" r
         ON a.role_id = r.id
-        WHERE deleted_at IS NULL
+        WHERE a.deleted_at IS NULL
         `
       )
 

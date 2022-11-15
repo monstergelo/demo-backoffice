@@ -30,7 +30,9 @@ async function setup (fastify, options) {
     ssl: false
   })
   await fastify.register(cors, {
-    origin: "https://demo-backoffice-client.vercel.app", // reminder: set false on production
+    origin: process.env.ENVIRONMENT == 'DEVELOPMENT' 
+      ? true
+      : "https://demo-backoffice-client.vercel.app", // reminder: set false on production
     credentials: 'true',
   })
 

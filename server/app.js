@@ -8,11 +8,15 @@ import disbursementRoute from './routes/disbursement.js'
 import bankAccountRoute from './routes/bank-account.js'
 import fdsRoute from './routes/fds.js'
 import userRoute from './routes/user.js'
+import Fastify from 'fastify'
 
 import cookie from '@fastify/cookie'
 import auth from '@fastify/auth'
 import jwt from '@fastify/jwt'
 import postgres from '@fastify/postgres'
+import cors from '@fastify/cors'
+
+import dotenv from 'dotenv'
 
 import { getConnectionString } from './utilities.js'
 
@@ -25,6 +29,11 @@ async function setup (fastify, options) {
     connectionString: getConnectionString(),
     ssl: false
   })
+  await fastify.register(cors, {
+    origin: "https://demo-backoffice-client.vercel.app", // reminder: set false on production
+    credentials: 'true',
+  })
+
   fastify.register(adminLogDecorator)
   await fastify.after()
 
@@ -43,3 +52,15 @@ async function setup (fastify, options) {
 
 
 export default setup
+
+// "headers": [
+//   {
+//     "source": "/(.*)",
+//     "headers": [
+//       { "key": "Access-Control-Allow-Credentials", "value": "true" },
+//       { "key": "Access-Control-Allow-Origin", "value": "" },
+//       { "key": "Access-Control-Allow-Methods", "value": "GET,OPTIONS,PATCH,DELETE,POST,PUT" },
+//       { "key": "Access-Control-Allow-Headers", "value": "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version" }
+//     ]
+//   }
+// ]

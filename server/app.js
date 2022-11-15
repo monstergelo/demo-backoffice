@@ -30,7 +30,7 @@ async function setup (fastify, options) {
     ssl: false
   })
   await fastify.register(cors, {
-    origin: false, // reminder: set false on production
+    origin: true, // reminder: set false on production
     credentials: 'true',
   })
 

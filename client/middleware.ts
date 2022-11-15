@@ -4,10 +4,12 @@ import type { NextRequest } from 'next/server'
 
 export function middleware(request: NextRequest) {
   const jwt = request.cookies.get('jwt')
+  console.log(jwt)
 
   if (!jwt && request.nextUrl.pathname !== '/login') {
-    request.nextUrl.pathname = "/login";
-    return NextResponse.redirect(request.nextUrl);
+    console.log('no jwt')
+    // request.nextUrl.pathname = "/login";
+    // return NextResponse.redirect(request.nextUrl);
   }
 
   return NextResponse.next();

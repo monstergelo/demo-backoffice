@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Box, Button, Grid, TextField, CircularProgress  } from "@mui/material";
+import { Box, Typography, Button, Grid, TextField, CircularProgress  } from "@mui/material";
 import { useForm } from "react-hook-form";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -49,21 +49,23 @@ const Login = () => {
           noValidate
           onSubmit={handleSubmit(onSubmit)}
         >
-          <div>
+          <Box display="flex" alignItems="center">
             <TextField
               disabled={isSubmitting}
               label="username"
               {...register('name')}
-            />
-          </div>
-          <div>
+            /> 
+            <Typography variant="caption" color="grey">userTest</Typography>
+          </Box>
+          <Box  display="flex" alignItems="center">
             <TextField
               disabled={isSubmitting}
               label="password"
               type="password"
               {...register('password')}
             />
-          </div>
+            <Typography variant="caption" color="grey">test</Typography>
+          </Box>
           <Box display="flex" justifyContent="center">
             <Button disabled={isSubmitting} fullWidth type="submit" variant="contained" sx={{m: 1}}>
               {isSubmitting ? <CircularProgress /> : "Submit"}

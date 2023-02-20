@@ -20,6 +20,7 @@ import dotenv from 'dotenv'
 
 import { getConnectionString } from './utilities.js'
 
+//change database
 async function setup (fastify, options) {
   fastify.register(cookie)
   fastify.register(jwt, {
